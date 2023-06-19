@@ -16,7 +16,8 @@ import DeleteCardPopup from './DeleteCardPopup';
 import ImagePopup from './ImagePopup';
 import InfoTooltip from './InfoTooltip.js';
 
-import { api } from '../utils/Api';
+// import { api } from '../utils/Api';
+import Api from '../utils/Api';
 import * as authApi from '../utils/AuthApi';
 import { CurrentUserContext } from './contexts/CurrentUserContext';
 import { CardsContext } from './contexts/CardsContext';
@@ -41,6 +42,9 @@ function App() {
   const [userData, setUserData] = React.useState({ email: '', _id: '' });//State for user regiztration data
   const [isLoggedIn, setLoggedIn] = React.useState(false); //State logged in user
   const navigate = useNavigate();
+
+  const api = new Api('http://localhost:3000', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDg4NWZmMzdlYjU1ODkxNzUzZDg0OWUiLCJpYXQiOjE2ODcxNTk4MTMsImV4cCI6MTY4Nzc2NDYxM30.YRVAa3kpJDcl2Ewmdot48JOLlfdgrbUKhXG4l7eGv2M');
+
 
 
   /**
@@ -101,7 +105,7 @@ function App() {
     if (token) {
       authApi.getUserData(token)
         .then((res) => {
-            const data = res.data;
+            const data = res;
             setUserData({ email: data.email, _id: data._id });
             setLoggedIn(true);
             navigate('/', { replace: true });
@@ -197,7 +201,7 @@ function App() {
    */
   function handleCardLike(card) {
     //is it my like?
-    const isLiked = card.likes.some(i => i._id === currentUser._id);
+    const isLiked = card.likes.some(id => id === currentUser._id);
     api.changeLikeCardStatus(card._id, isLiked)
       .then(newCard => {
         setCards((state) => state.map((c) => c._id === card._id ? newCard : c));

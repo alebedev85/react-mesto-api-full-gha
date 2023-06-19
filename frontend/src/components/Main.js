@@ -1,6 +1,6 @@
 import React from 'react';
 import Card from './Card';
-import Footer from './Footer';
+// import Footer from './Footer';
 import { CurrentUserContext } from './contexts/CurrentUserContext';
 import { CardsContext } from './contexts/CardsContext';
 
