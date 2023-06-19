@@ -1,0 +1,17 @@
+.element {
+  width: 282px;
+  height: 361px;
+  background-color: #FFFFFF;
+  color: #000000;
+  border-radius: 10px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    "image image"
+    "title reaction";
+  align-content: center;
+  column-gap: 11px;
+  position: relative;
+}
