@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 const helmet = require('helmet');
 const { errors } = require('celebrate');
@@ -50,6 +52,12 @@ app.use(helmet());
 app.use(express.json());
 
 app.use(requestLogger);
+
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
 
 app.use(router);
 

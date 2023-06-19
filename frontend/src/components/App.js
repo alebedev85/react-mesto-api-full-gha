@@ -16,7 +16,6 @@ import DeleteCardPopup from './DeleteCardPopup';
 import ImagePopup from './ImagePopup';
 import InfoTooltip from './InfoTooltip.js';
 
-// import { api } from '../utils/Api';
 import Api from '../utils/Api';
 import * as authApi from '../utils/AuthApi';
 import { CurrentUserContext } from './contexts/CurrentUserContext';
@@ -49,8 +48,7 @@ function App() {
 
   /**
    * Handler to user registration
-   * @param {string} name - new name.
-   * @param {string} description - new description.
+   * @param {object} - email and password.
    */
   function handlerRegUser({ email, password }) {
     setIsLoading(true);
@@ -72,8 +70,7 @@ function App() {
 
   /**
   * Handler to user authorizetion
-  * @param {string} name - new name.
-  * @param {string} description - new description.
+  * @param {object} - email and password.
   */
   function handlerLogIn({ email, password }) {
     setIsLoading(true);
