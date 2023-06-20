@@ -1,7 +1,9 @@
-export default class Api {
-  constructor(url, token) {
+import { BASE_URL } from '../utils/constants';
+
+class Api {
+  constructor(url) {
     this._url = url;
-    this._token = `Bearer ${token}`;
+    this._token = ``;
   }
 
   /**
@@ -142,6 +144,17 @@ export default class Api {
       body: JSON.stringify(avatar)
     });
   }
+
+  /**
+     * Set token in api headers
+     * @param {string} token - new token.
+     * @returns json of card with new likes
+     */
+  setToken(token) {
+    this._token = `Bearer ${token}`;
+  }
 }
+
+export const api = new Api(BASE_URL);
 
 // export const api = new Api('https://mesto.nomoreparties.co/v1/cohort-61', '3e070c18-b10f-4e80-b715-68fa3cc00268');
