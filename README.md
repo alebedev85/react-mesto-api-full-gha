@@ -13,4 +13,4 @@ IP-адрес 158.160.102.194
 
 Frontend https://nexus.andrey.mesto.nomoredomains.rocks
 
-Backend https://...
+Backend https://api.nexus.andrey.mesto.nomoredomains.work
