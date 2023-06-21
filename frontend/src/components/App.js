@@ -52,9 +52,6 @@ function App() {
     setIsLoading(true);
     authApi.register(email, password)
       .then((data) => {
-
-        console.log(data);
-
         setUserData({ email: data.email, _id: data._id });
         setSucces(true);
         navigate('/sign-in', { replace: true });
@@ -79,7 +76,6 @@ function App() {
       .then(({ token }) => {
         localStorage.setItem('jwt', token);
         setToken(token);
-        api.setToken(token);
       })
       .catch(err => {
         console.log(err)
@@ -96,17 +92,18 @@ function App() {
     localStorage.removeItem('jwt');
     setLoggedIn(false);
     setUserData({ email: '', _id: '' });
-    navigate('/sign-up', { replace: true });
+    api.setToken('');
+    navigate('/sign-in', { replace: true });
   }
 
   // Check token
   React.useEffect(() => {
     if (token) {
-      api.setToken(token);
       authApi.getUserData(token)
         .then((res) => {
           const data = res;
           setUserData({ email: data.email, _id: data._id });
+          setCurrentUser(res)
           setLoggedIn(true);
           navigate('/', { replace: true });
         })
@@ -117,7 +114,6 @@ function App() {
   }, [token]);
 
   React.useEffect(() => {
-
     // Check token
     const jwt = localStorage.getItem('jwt');
     if (jwt) {

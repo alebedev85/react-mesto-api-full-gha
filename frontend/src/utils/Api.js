@@ -3,7 +3,7 @@ import { BASE_URL } from '../utils/constants';
 class Api {
   constructor(url) {
     this._url = url;
-    this._token = ``;
+    this._token = '';
   }
 
   /**
@@ -12,7 +12,7 @@ class Api {
    */
   _getHeaders() {
     return {
-      authorization: this._token,
+      Authorization: this._token,
       "Content-Type": 'application/json'
     };
   }
@@ -148,7 +148,6 @@ class Api {
   /**
      * Set token in api headers
      * @param {string} token - new token.
-     * @returns json of card with new likes
      */
   setToken(token) {
     this._token = `Bearer ${token}`;
