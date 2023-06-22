@@ -9,8 +9,8 @@
 
 ## Ссылки на проект
 
-IP-адрес 158.160.102.194
+IP 158.160.102.194;
 
-Frontend https://nexus.andrey.mesto.nomoredomains.rocks
+Frontend https://nexus.andrey.mesto.nomoredomains.rocks;
 
-Backend https://api.nexus.andrey.mesto.nomoredomains.work
+Backend https://api.nexus.andrey.mesto.nomoredomains.work;
