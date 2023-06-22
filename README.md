@@ -9,7 +9,7 @@
 
 ## Ссылки на проект
 
-IP 158.160.102.194;
+IP 158.160.110.111;
 
 Frontend https://nexus.andrey.mesto.nomoredomains.rocks;
 
