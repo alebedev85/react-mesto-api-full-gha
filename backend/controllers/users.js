@@ -40,12 +40,7 @@ const getMyUser = (req, res, next) => {
     .then((user) => {
       res.send(user);
     })
-    .catch((err) => {
-      if (err.name === 'CastError') {
-        return next(new BadRequestError('Введены некорректные данные'));
-      }
-      return next(err);
-    });
+    .catch((err) => next(err));
 };
 
 /**

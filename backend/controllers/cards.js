@@ -38,12 +38,12 @@ const deleteCard = (req, res, next) => {
       if (card.owner.toString() !== req.user._id) {
         throw new HaveNoRightError('Вы не можете удалить чужую карточку');
       }
-      cardsModel.findByIdAndRemove(req.params.cardId)
+      card.deleteOne()
         .then(() => res.send({ message: 'Пост удалён' }))
         .catch(next);
     })
     .catch((err) => {
-      if (err.name === 'ValidationError' || err.name === 'CastError') {
+      if (err.name === 'CastError') {
         return next(new BadRequestError('Введены некорректные данные'));
       }
       return next(err);
