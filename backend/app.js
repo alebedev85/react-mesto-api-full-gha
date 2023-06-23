@@ -11,7 +11,11 @@ const errorHandler = require('./middlewares/errorHandler');
 
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
-mongoose.connect('mongodb://127.0.0.1:27017/mestodb');
+const { PORT = 3000, MONGO_URL = 'mongodb://127.0.0.1/mestodb' } = process.env;
+
+mongoose.connect(MONGO_URL)
+  .then(() => console.log('База данных подключена'))
+  .catch((err) => console.log('Ошибка подключения к БД', err));
 
 const app = express();
 app.use(cors());
@@ -34,6 +38,6 @@ app.use(errorLogger);
 app.use(errors());
 app.use(errorHandler);
 
-app.listen(3000, () => {
-  console.log('Server is running on port 3000');
+app.listen(PORT, () => {
+  console.log(`App listening on port ${PORT}`);
 });

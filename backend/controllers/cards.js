@@ -1,3 +1,4 @@
+const { default: mongoose } = require('mongoose');
 const cardsModel = require('../models/card');
 
 const HaveNoRightError = require('../errors/have-no-right');
@@ -22,7 +23,7 @@ const creatCard = (req, res, next) => {
       res.status(201).send(users);
     })
     .catch((err) => {
-      if (err.name === 'ValidationError') {
+      if (err instanceof mongoose.Error.ValidationError) {
         return next(new BadRequestError('Введены некорректные данные'));
       }
       return next(err);

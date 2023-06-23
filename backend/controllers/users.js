@@ -1,4 +1,5 @@
 const bcrypt = require('bcryptjs');
+const { default: mongoose } = require('mongoose');
 const jwt = require('../utils/jwt');
 const usersModel = require('../models/user');
 
@@ -71,7 +72,7 @@ const createUser = (req, res, next) => {
       if (err.code === 11000) {
         return next(new BadEmailError('Такой email уже используется'));
       }
-      if (err.name === 'ValidationError') {
+      if (err instanceof mongoose.Error.ValidationError) {
         return next(new BadRequestError('Введены некорректные данные'));
       }
       return next(err);
@@ -90,7 +91,7 @@ const edithUser = (req, res, next) => {
       res.send(user);
     })
     .catch((err) => {
-      if (err.name === 'ValidationError') {
+      if (err instanceof mongoose.Error.ValidationError) {
         return next(new BadRequestError('Введены некорректные данные'));
       }
       return next(err);
@@ -108,7 +109,7 @@ const editAvatarhUser = (req, res, next) => {
       res.send(user);
     })
     .catch((err) => {
-      if (err.name === 'ValidationError') {
+      if (err instanceof mongoose.Error.ValidationError) {
         return next(new BadRequestError('Введены некорректные данные'));
       }
       return next(err);
