@@ -1,6 +1,6 @@
 [![Статус тестов](../../actions/workflows/tests.yml/badge.svg)](https://github.com/alebedev85/react-mesto-api-full-gha)
 
-<a name="project-description"><h2>1. Описание проекта</h2></a>
+**Описание проекта:**
 Данная проектная работа - итоговая в рамках образовательной программы <a href="https://practicum.yandex.ru/">Яндекс Практикума</a>. Проект представляет собой адаптивное приложение (SPA), написанное на "React" (часть frontend) и "Node" (часть backend), с возможностью регистрации личного кабинета пользователя, редактированием данных и добавлением фотокарточек в общую галерею.
 
 <a href="https://github.com/alebedev85/mesto">Изначально</a> приложение было написано на нативных технологиях: JavaScript, CSS3 и HTML5. <a href="https://github.com/alebedev85/react-mesto-auth">Затем</a> проект был перенесен на "React" с добавлением функционала регистрации и авторизации пользователей, <a href="https://github.com/alebedev85/mesto-backend">отдельно</a> написана логика серверной части с фреймворком "Express" и в завершение обе части объединены и сохранены на виртуальной машине, размещенной на <a href="https://cloud.yandex.ru/">Яндекс Облаке</a>.
